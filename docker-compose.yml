@@ -11,10 +11,10 @@ services:
     depends_on:
       - db
     environment:
-      - "DJANGO_SECRET_KEY=django-insecure-b764$$#(&o4o((cvy!z^nsseq5@erq#e^0%5r5a(%c24*f^*sde"
+      - "DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}"
       - "DJANGO_DEBUG=TRUE"
-      - "EMAIL_HOST_USER=aminkhm097@gmail.com"
-      - "EMAIL_HOST_PASSWORD=bdhjbczdtoxjqbhj"
+      - "EMAIL_HOST_USER=${EMAIL_HOST_USER}"
+      - "EMAIL_HOST_PASSWORD=${EMAIL_HOST_PASSWORD}"
 
   db:
     image: postgres:14
