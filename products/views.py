@@ -1,7 +1,7 @@
 from django.views.generic import ListView, DetailView, CreateView
 
 from django.shortcuts import render
-
+from django.utils.translation import gettext as _
 from products.forms import CommentForm
 from products.models import Product, Comment, Category
 
