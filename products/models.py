@@ -1,6 +1,7 @@
 from django.db import models
 from mptt.models import MPTTModel, TreeForeignKey
 from django.urls import reverse
+from django.contrib.auth import get_user_model
 # Create your models here.
 
 class Category(MPTTModel):
@@ -32,7 +33,7 @@ class Product(models.Model):
     active = models.BooleanField(default=True)
     slug = models.SlugField(unique=True , allow_unicode=True , blank=True, null=True)
 
-    categories = models.ManyToManyField(Category , related_name='categories', blank=True)
+    categories = models.ForeignKey(Category , related_name='categories', blank=True , on_delete=models.CASCADE)
     datetime_created = models.DateTimeField(auto_now_add=True)
     datetime_modified = models.DateTimeField(auto_now=True)
 
@@ -70,3 +71,37 @@ class ProductImage(models.Model):
         for index , image in enumerate(self.product.images.all()):
             image.display_order = index
             image.save()
+
+
+
+
+class ActiveCommentManager(models.Manager):
+    def get_queryset(self):
+        return super(ActiveCommentManager , self).get_queryset().filter(active=True)
+
+
+class Comment(models.Model):
+    PRODUCT_STARS = (
+        ('1' , 'Very Bad'),
+        ('2' , 'Bad'),
+        ('3' , 'Normal'),
+        ('4' , 'Good'),
+        ('5' , 'Prefect'),
+    )
+    product = models.ForeignKey(Product, on_delete=models.CASCADE ,related_name='comments')
+    author = models.ForeignKey(get_user_model() , on_delete=models.CASCADE , related_name='usercomments')
+    body = models.TextField()
+    stars = models.CharField(max_length=10 , choices=PRODUCT_STARS , blank=True)
+
+    datetime_created = models.DateTimeField(auto_now_add=True)
+    datetime_modified = models.DateTimeField(auto_now=True)
+
+    active = models.BooleanField(default=True)
+
+    # Manager
+
+    objects = models.Manager()
+    active_comments_manager = ActiveCommentManager()
+
+    def get_absolute_url(self):
+        return reverse('product_detail' , args=[self.product.id])

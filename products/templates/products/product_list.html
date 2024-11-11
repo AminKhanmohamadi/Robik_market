@@ -47,26 +47,18 @@
                                         <div id="collapseOne" class="accordion-collapse collapse show"
                                              aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                             <div class="accordion-body">
-                                                <div class="form-group">
-                                                    <input type="checkbox" id="category1">
-                                                    <label for="category1">گوشی موبایل</label>
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="checkbox" id="category2">
-                                                    <label for="category2">جانبی موبایل</label>
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="checkbox" id="category3">
-                                                    <label for="category3">دوربین دیجیتال</label>
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="checkbox" id="category4">
-                                                    <label for="category4">ساعت هوشمند</label>
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="checkbox" id="category5">
-                                                    <label for="category5">لپ تاپ</label>
-                                                </div>
+                                                {% for category , childeren in categories_with_children.items %}
+                                                    <div class="form-group">
+                                                        <input type="checkbox" id="category1">
+                                                        <label for="category1">{{ category.title }}</label>
+                                                    </div>
+                                                    {% for child in childeren %}
+                                                        <div class="form-group">
+                                                            <input type="checkbox" id="category1">
+                                                            <label for="category1">{{ child.title }}</label>
+                                                        </div>
+                                                    {% endfor %}
+                                                {% endfor %}
                                             </div>
                                         </div>
                                     </div>
@@ -121,113 +113,7 @@
                                     </div>
                                 </div>
 
-                                <div class="accordion filters-container mt-3">
-                                    <div class="accordion-item">
-                                        <div id="collapseFour" class="accordion-collapse show"
-                                             aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                            <div class="accordion-body pb-2">
-                                                <div class="form-group">
-                                                    <input type="checkbox" id="only-warranty">
-                                                    <label for="only-warranty">فقط کالاهای دارای گارانتی</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <div class="accordion filters-container mt-3">
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="headingFive">
-                                            <button class="accordion-button py-2 px-3" type="button"
-                                                    data-bs-toggle="collapse" data-bs-target="#collapseFive"
-                                                    aria-expanded="true" aria-controls="collapseFive">
-                                                جدیدترین محصولات
-                                            </button>
-                                        </h2>
-                                        <div id="collapseFive" class="accordion-collapse collapse show"
-                                             aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                            <div class="accordion-body">
-                                                <div class="row">
-                                                    <!-- Side Product -->
-                                                    <div class="col-12 col-md-4 col-lg-12 px-0 mt-2">
-                                                        <a href="product.html">
-                                                            <div class="side-product">
-                                                                <div class="row pl-3">
-                                                                    <div class="col-3 pl-2">
-                                                                        <div class="image"
-                                                                             style="background-image: url('assets/images/products/p100.png')"></div>
-                                                                    </div>
-                                                                    <div class="col-9 pr-0">
-                                                                        <h2>گوشی موبایل سامسونگ مدل Galaxy A51</h2>
-                                                                        <div class="row">
-                                                                            <div class="col-7 pl-0">
-                                                                                <span class="encode4365gbf265g43d">320.000 تومان</span>
-                                                                            </div>
-                                                                            <div class="col-5 pr-0 text-end">
-                                                                                <span class="views">321 بازدید</span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <!-- Side Product -->
-                                                    <!-- Side Product -->
-                                                    <div class="col-12 col-md-4 col-lg-12 px-0 mt-2">
-                                                        <a href="product.html">
-                                                            <div class="side-product">
-                                                                <div class="row pl-3">
-                                                                    <div class="col-3 pl-2">
-                                                                        <div class="image"
-                                                                             style="background-image: url('assets/images/products/p100.png')"></div>
-                                                                    </div>
-                                                                    <div class="col-9 pr-0">
-                                                                        <h2>گوشی موبایل سامسونگ مدل Galaxy A51</h2>
-                                                                        <div class="row">
-                                                                            <div class="col-7 pl-0">
-                                                                                <span class="encode4365gbf265g43d">320.000 تومان</span>
-                                                                            </div>
-                                                                            <div class="col-5 pr-0 text-end">
-                                                                                <span class="views">321 بازدید</span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <!-- Side Product -->
-                                                    <!-- Side Product -->
-                                                    <div class="col-12 col-md-4 col-lg-12 px-0 mt-2">
-                                                        <a href="product.html">
-                                                            <div class="side-product">
-                                                                <div class="row pl-3">
-                                                                    <div class="col-3 pl-2">
-                                                                        <div class="image"
-                                                                             style="background-image: url('assets/images/products/p100.png')"></div>
-                                                                    </div>
-                                                                    <div class="col-9 pr-0">
-                                                                        <h2>گوشی موبایل سامسونگ مدل Galaxy A51</h2>
-                                                                        <div class="row">
-                                                                            <div class="col-7 pl-0">
-                                                                                <span class="encode4365gbf265g43d">320.000 تومان</span>
-                                                                            </div>
-                                                                            <div class="col-5 pr-0 text-end">
-                                                                                <span class="views">321 بازدید</span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <!-- Side Product -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                                 <!-- /Side Panel -->
                             </div>
                             <div class="col-12 col-lg-9 px-0 pl-lg-0 pr-lg-2 mt-2 mt-lg-0">
@@ -263,17 +149,27 @@
                                                                  style="background-image: url('{{ product.images.all.0.image.url }}')"></div>
                                                         </a>
                                                         <div class="details p-3">
-                                                            <div class="category">
-                                                                <a href="products.html">گوشی موبایل</a>
-                                                                &nbsp;/&nbsp;
-                                                                <a href="products.html">سامسونگ</a>
-                                                            </div>
-                                                            <a href="{{ product.get_absolute_url }}"><h2>{{ product.title }}</h2></a>
+                                                            {% for category , child in categories_with_children.items %}
+                                                                <div class="category">
+                                                                    <a href="products.html">{{ category.title }}</a>
+                                                                    {% for ch in child %}
+                                                                        &nbsp;/&nbsp;
+                                                                        <a href="products.html">{{ ch.title }}</a>
+                                                                    {% endfor %}
+                                                                </div>
+                                                            {% endfor %}
+
+                                                            <a href="{{ product.get_absolute_url }}">
+                                                                <h2>{{ product.title }}</h2></a>
                                                             {% if product.offer %}
                                                                 <span class="text-decoration-line-through">{{ product.sell_price }}</span>
-                                                                <div class="encode4365gbf265g43d">{{ product.off_price|intcomma:False }} تومان</div>
+                                                                <div class="encode4365gbf265g43d">{{ product.off_price|intcomma:False }}
+                                                                    تومان
+                                                                </div>
                                                             {% else %}
-                                                                <div class="encode4365gbf265g43d">{{ product.sell_price|intcomma:False }} تومان</div>
+                                                                <div class="encode4365gbf265g43d">{{ product.sell_price|intcomma:False }}
+                                                                    تومان
+                                                                </div>
                                                             {% endif %}
 
                                                         </div>
